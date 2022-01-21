@@ -1,13 +1,12 @@
-name: Issue assignment
-on:
-    issues:
-        types: [opened]
+name: issue-translator
+on: 
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  
 jobs:
-    auto-assign:
-        runs-on: ubuntu-latest
-        steps:
-            - name: 'Auto-assign issue'
-              uses: pozil/auto-assign-issue@v1.3.0
-              with:
-                  repo-token: ${{ secrets.GITHUB_TOKEN }}
-                  assignees: Rasmafr
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tomsun28/issues-translate-action@v2.6
